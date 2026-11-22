@@ -1,0 +1,28 @@
+# UTF-8
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=(2, 6, 0, 0),
+    prodvers=(2, 6, 0, 0),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable('080404b0', [
+        StringStruct('CompanyName', '深圳市创炫互动网络科技有限公司'),
+        StringStruct('FileDescription', '视频转图片/动图工具 - 视频转图片序列、视频转 GIF/WebP 动图'),
+        StringStruct('FileVersion', '2.6.0.0'),
+        StringStruct('InternalName', '视频转图片'),
+        StringStruct('LegalCopyright', '深圳市创炫互动网络科技有限公司'),
+        StringStruct('OriginalFilename', '视频转图片.exe'),
+        StringStruct('ProductName', '视频转图片/动图工具'),
+        StringStruct('ProductVersion', '2.6.0.0')
+      ])
+    ]),
+    VarFileInfo([VarStruct('Translation', [2052, 1200])])
+  ]
+)

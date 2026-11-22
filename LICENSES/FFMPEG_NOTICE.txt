@@ -1,0 +1,4 @@
+随包 FFmpeg 为 GPL-3.0 构建（gyan.dev essentials 构建，imageio-ffmpeg 分发）。
+对应源码可从 https://ffmpeg.org/download.html 获取；
+如需与该二进制完全一致的源码及编译参数，请在 3 年内联系 1045117396@qq.com 免费获取。
+许可证全文：LICENSES/FFMPEG-GPL-3.0.txt

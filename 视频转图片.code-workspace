@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../表情包生成器"
+		},
+		{
+			"path": "../AI去背景工具"
+		}
+	],
+	"trae": {
+		"workspaceId": "7ee11be800e494716ba577ba272030fa"
+	},
+	"settings": {}
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>透明检查器 — 拖入图片查看透明区域</title>
+<style>
+  body {
+    margin: 0; min-height: 100vh; background: #1e2430;
+    font-family: "Microsoft YaHei", sans-serif; color: #dfe6f0;
+    display: flex; flex-direction: column; align-items: center; padding: 24px;
+    box-sizing: border-box;
+  }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .tip { font-size: 13px; color: #9fb0c8; margin-bottom: 16px; }
+  #zone {
+    width: 640px; max-width: 92vw; height: 420px;
+    border: 2px dashed #5a6d8c; border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; transition: border-color .2s, background .2s;
+  }
+  #zone.drag { border-color: #4da3ff; background: rgba(77,163,255,.08); }
+  #zone .icon { font-size: 44px; margin-bottom: 10px; }
+  #zone .msg { font-size: 16px; }
+  #zone .sub { font-size: 12px; color: #8fa1bb; margin-top: 6px; }
+  /* 透明区域的棋盘格底（灰白相间 16px 格） */
+  .checker {
+    background-image:
+      linear-gradient(45deg, #cfcfcf 25%, transparent 25%),
+      linear-gradient(-45deg, #cfcfcf 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #cfcfcf 75%),
+      linear-gradient(-45deg, transparent 75%, #cfcfcf 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: #f5f5f5;
+  }
+  #stage {
+    margin-top: 18px; padding: 14px; border-radius: 10px;
+    display: none; max-width: 94vw;
+  }
+  #stage img { max-width: 88vw; max-height: 62vh; display: block; }
+  #info { margin-top: 10px; font-size: 13px; color: #9fb0c8; text-align: center; }
+  #fileInput { display: none; }
+</style>
+</head>
+<body>
+  <h1>透明检查器</h1>
+  <div class="tip">把导出的 WebP / GIF / PNG 拖到下面虚线框里，透明区域会显示为棋盘格</div>
+  <div id="zone">
+    <div class="icon">🖼️</div>
+    <div class="msg">把图片文件拖到这里，或点击选择文件</div>
+    <div class="sub">支持 WebP / GIF / PNG（动画文件显示第一帧）</div>
+  </div>
+  <div id="stage" class="checker">
+    <img id="img" alt="预览">
+    <div id="info"></div>
+  </div>
+  <input type="file" id="fileInput" accept="image/*">
+<script>
+  const zone = document.getElementById('zone');
+  const stage = document.getElementById('stage');
+  const img = document.getElementById('img');
+  const info = document.getElementById('info');
+  const fileInput = document.getElementById('fileInput');
+
+  function load(file) {
+    if (!file || !file.type.startsWith('image')) return;
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      stage.style.display = 'block';
+      const size = (file.size / 1024).toFixed(1);
+      info.textContent = `${file.name} ｜ ${img.naturalWidth}×${img.naturalHeight} ｜ ${size} KB ｜ 透明区域 = 棋盘格`;
+    };
+    img.src = url;
+  }
+
+  zone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', e => load(e.target.files[0]));
+  ['dragenter', 'dragover'].forEach(ev =>
+    zone.addEventListener(ev, e => { e.preventDefault(); zone.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(ev =>
+    zone.addEventListener(ev, e => { e.preventDefault(); zone.classList.remove('drag'); }));
+  zone.addEventListener('drop', e => load(e.dataTransfer.files[0]));
+</script>
+</body>
+</html>

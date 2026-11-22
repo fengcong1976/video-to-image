@@ -1,0 +1,6 @@
+Qt 6 / PySide6 / shiboken6
+Copyright (C) The Qt Company Ltd.
+本应用以动态链接方式使用 Qt 6 运行库（PySide6 与 shiboken6 的 DLL 以独立文件随包分发），
+未修改 Qt 源码。许可协议为 LGPL-3.0，全文见同目录的 LGPL-3.0.txt。
+用户可以自行替换安装目录中的 Qt 运行库文件。
+项目地址：https://code.qt.io/cgit/pyside/pyside-setup.git/
