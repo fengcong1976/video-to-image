@@ -19,6 +19,15 @@ GitHub 镜像：https://github.com/fengcong1976/video-to-image
 > 随包 FFmpeg 为 GPL-3.0 构建。对应源码可从 https://ffmpeg.org/download.html 获取；
 > 如需与该二进制完全一致的源码及编译参数，请在 3 年内联系 1045117396@qq.com 免费获取。
 
+## 其他随包组件
+
+| 组件 | 许可 | 来源 / 源码 |
+|---|---|---|
+| OpenCV 5.0.0.93 | Apache-2.0 | https://opencv.org/ |
+| FFmpeg（OpenCV videoio 内置） | LGPL-2.1-or-later | https://ffmpeg.org/ |
+| NumPy 2.2.6 | BSD-3-Clause | https://numpy.org/ |
+| Pillow 12.3.0 | HPND | https://python-pillow.org/ |
+
 ## 许可全文
 
 安装目录下的 `LICENSES/` 存放 LGPL-3.0 全文、Qt 声明，以及 FFmpeg 等第三方组件说明。
